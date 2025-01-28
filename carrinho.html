@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formas de pagamentos</title>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="carrinho.js"></script>
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+</head>
+<body>
+
+<div class="container mt-6">
+  <h2 class="text-center mb-4"><img src="img/Pousada Venâncio.png" alt="" width="150px">Pousada Venâncio</h2>
+  <form action="https://api.sheetmonkey.io/form/tKh1W7XDAZUewn7qgT5LVM" method="post" id="reservationForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">Nome:</label>
+        <input type="text" class="form-control" id="Nome" name="Nome" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Email">Email:</label>
+        <input type="text" class="form-control" id="email" name="Email" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="Numero pessoas">Quantas pessoas:</label>
+        <input type="number" class="form-control" id="numeropessoas" name="numeros de pessoas" min="1" max="3" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="reservationDate">Data de Hospedagem:</label>
+        <input type="date" class="form-control" id="datareserva" name="Data da reserva" required>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Qual Quarto?:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Single" id="roomTypeSingle" name="roomType" onclick="updatePrice()">
+        <label class="form-check-label" for="roomTypeSingle">Ventilador</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Double" id="roomTypeDouble" name="roomType" onclick="updatePrice()">
+        <label class="form-check-label" for="roomTypeDouble">Ar-condicionado</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Suite" id="roomTypeSuite" name="roomType" onclick="updatePrice()">
+        <label class="form-check-label" for="roomTypeSuite">Spa Premium</label>
+      </div>
+    </div>
+    
+    <div id="priceDisplay"></div>
+    <div class="form-group col-md-6">
+      <label>Método de Pagamento:</label>
+      <select class="form-control" id="paymentMethod" name="paymentMethod" required>
+        <option value="">Selecione o Método de Pagamento</option>
+        <option value="CreditCard">Cartão de Crédito</option>
+        <option value="DebitCard">Cartão de Débito</option>
+        <option value="PayPal">Pix <img src="img/logo-pix-icone-1024.webp" alt="" width="14px"></option>
+        
+      </select>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="robotCheck" required>
+        <label class="form-check-label" for="robotCheck">Não sou um robô</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Resevar</button>
+  </form>
+
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="card">
+        <a href="ventilador.html"><img src="img/Quarto com ventilador.jpg" class="card-img-top" alt="Single Room" height="300px" ></a>
+        <div class="card-body">
+          <h5 class="card-title">Quarto com Ventilador</h5>
+          <p class="card-text">$45 por noite</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="img/quarto com ar condicionado.jpg" class="card-img-top" alt="Double Room" height="300px">
+        <div class="card-body">
+          <h5 class="card-title">Quarto com Ar-condicionado</h5>
+          <p class="card-text">$90 por noite</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="img/hoteis-litoral-norte-sao-paulo-capa2019.jpg" class="card-img-top" alt="Suite" height="300px">
+        <div class="card-body">
+          <h5 class="card-title">Spar premiun</h5>
+          <p class="card-text">$200 por Dia</p>
+
+
+          <script>
+            $(document).ready(function(){
+            
+              $('#datareserva').datepicker({
+                format: 'yyyy-mm-dd', 
+                autoclose: true 
+              });
+          
+             
+              $('#reservationForm').submit(function(event){
+                event.preventDefault(); 
+                var firstName = $('#nome').val();
+                var lastName = $('#email').val();
+                var numOfNights = $('#numeropessoas').val();
+                var reservationDate = $('datareserva').val();
+                var roomType = [];
+                $('input[name="roomType"]:checked').each(function() {
+                  roomType.push($(this).val());
+                });
+                var paymentMethod = $('#paymentMethod').val();
+          
+                console.log("Nome: " + firstName);
+                console.log("Email: " + lastName);
+                console.log("Numero de pessoas: " + numOfNights);
+                console.log("data reserva: " + reservationDate);
+                console.log("Room Type: " + roomType.join(", "));
+                console.log("Forma de pagamento: " + paymentMethod);
+             
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+</body>
+</html>
