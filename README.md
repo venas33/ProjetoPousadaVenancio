@@ -14,7 +14,7 @@ O objetivo principal deste projeto é demonstrar as habilidades adquiridas ao lo
 - Implementação de funcionalidades interativas com JavaScript e jQuery
 - Utilização de boas práticas de desenvolvimento web
 
-Tecnologias Utilizadas
+##Tecnologias Utilizadas
 
 - HTML5
 - CSS3
@@ -35,3 +35,5 @@ Tecnologias Utilizadas
 ## Licença
 
 Este projeto é de uso acadêmico e não possui uma licença específica.
+
+##Link do site: https://pousadavenancio.netlify.app/
